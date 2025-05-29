@@ -3,7 +3,7 @@
 # Database connection settings
 database:
   # Use connection string instead of individual parameters
-  connection_string: "postgresql://postgres.xkeebngxvnmadtvnihej:7tEzBu6STXV7lfe8@aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres"
+  connection_string: ""
   
   # Table settings
   schema: "public"
