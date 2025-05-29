@@ -1,0 +1,23 @@
+CREATE TABLE public.test_import (
+    id BIGINT PRIMARY KEY,
+    created_at TIMESTAMP,
+    modified_at TIMESTAMP,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    address TEXT,
+    city VARCHAR(100),
+    state VARCHAR(2),
+    zip_code VARCHAR(10),
+    category VARCHAR(50),
+    amount DECIMAL(10,2),
+    quantity INTEGER,
+    status VARCHAR(20),
+    is_active BOOLEAN,
+    notes TEXT,
+    tags TEXT,
+    score DECIMAL(5,2),
+    reference_id VARCHAR(50),
+    external_id VARCHAR(20)
+);

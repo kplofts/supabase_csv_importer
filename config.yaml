@@ -1,0 +1,111 @@
+# Supabase CSV Importer Configuration
+
+# Database connection settings
+database:
+  # Use connection string instead of individual parameters
+  connection_string: "postgresql://postgres.xkeebngxvnmadtvnihej:7tEzBu6STXV7lfe8@aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres"
+  
+  # Table settings
+  schema: "public"
+  table_name: "test_import"
+  
+  # Connection pool settings
+  pool:
+    min_connections: 2
+    max_connections: 10
+    keepalive: 30
+
+# Import settings
+import:
+  # Chunk size in MB for splitting large files
+  chunk_size_mb: 100
+  
+  # Number of rows per batch
+  batch_size: 10000
+  
+  # Number of parallel workers
+  parallel_workers: 4
+  
+  # Use COPY command (faster) or INSERT (more compatible)
+  use_copy: true
+  
+  # Temporary table prefix
+  temp_table_prefix: "temp_import_"
+  
+  # Retry settings
+  max_retries: 3
+  retry_delay: 5
+
+# Performance optimizations
+optimization:
+  # Disable these during import for speed
+  disable_triggers: true
+  disable_indexes: false  # Be careful with this
+  use_unlogged_tables: true
+  
+  # Statement timeout for large imports (e.g., '30min', '1h', '0' for no timeout)
+  statement_timeout: "30min"
+  
+  # Maintenance commands after import
+  run_vacuum: true
+  run_analyze: true
+
+# Directory settings
+directories:
+  # Temporary directory for file chunks
+  temp_directory: "./temp"
+  
+  # Log directory
+  log_directory: "./logs"
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  directory: "./logs"
+  
+  # Keep logs for this many days
+  retention_days: 30
+
+# File handling
+file_handling:
+  # Encoding detection
+  encoding_detection: true
+  default_encoding: "utf-8"
+  
+  # CSV parsing
+  delimiter: ","
+  quote_char: '"'
+  escape_char: "\\"
+  skip_initial_space: true
+
+# Progress tracking
+progress:
+  # Update frequency (rows)
+  update_frequency: 1000
+  
+  # Show ETA
+  show_eta: true
+  
+  # Show speed metrics
+  show_speed: true
+
+# Resource limits
+limits:
+  # Maximum file size in GB
+  max_file_size_gb: 50
+  
+  # Maximum memory usage in MB per worker
+  max_memory_mb: 1024
+  
+  # Timeout in seconds
+  timeout: 3600
+
+# Cost tracking
+cost_tracking:
+  # Enable cost estimation
+  enabled: true
+  
+  # Supabase pricing (per GB)
+  storage_cost_per_gb: 0.125
+  bandwidth_cost_per_gb: 0.09
